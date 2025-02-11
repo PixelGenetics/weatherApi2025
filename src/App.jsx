@@ -1,35 +1,18 @@
 import './App.css'
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { Routes, Route} from 'react-router-dom';
+import Home from './pages/home';
+import Next from './pages/button/next';
+import Clouds from './pages/button/Clouds';
 
 function App() {
-  const [weatherData, setWeatherData] = useState('');
 
-  useEffect(() => {
-    async function weather() {
-      try{
-        const res = await axios.get('https://api.openweathermap.org/data/2.5/weather?lat=12.135538&lon=-86.220340&appid=7b55880c3f0e1b8fe767a1eb5dd79f01');
-        setWeatherData(res.data);
-        console.log(res.data)
-      }catch(error){
-        console.log(error);
-      }
-    }
-    weather();
-  }, [])
-
-  return (
-    <>
-      <div>
-        {weatherData && (
-          <div>
-            <div>Temp: {(weatherData.main.temp - 273.15).toFixed(2)} °C</div>
-            <div>Coord: {(weatherData.main.temp)}</div>
-          </div>
-        )}
-      </div>
-    </>
-  )
+  return(
+      <Routes>
+        <Route path='/' element={<Home />}/>
+        <Route path='/next' element={<Next />}/>
+        <Route path='/clouds' element={<Clouds />} />
+      </Routes>
+  )  
 }
 
 export default App
