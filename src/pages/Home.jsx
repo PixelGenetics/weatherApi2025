@@ -19,12 +19,14 @@ function Home(){
 
   return (
     <>
-      <div>
+      <div className='container'>
         {weatherData && (
-          <div>
-            <p>Temp: {(weatherData.main.temp - 273.15).toFixed(2)} °C</p>
-            <p>Coord: {(weatherData.main.temp)}</p>
-            <p>Wind speed: {(weatherData.wind.speed)}</p>
+          <div className='body_container'>
+            <p id='weather'>Weather: {weatherData.weather[0].main}</p>
+            <p id='temp'>Temp: {(weatherData.main.temp - 273.15).toFixed(2)} °C</p>
+            <p id='coord'>Coord: {(weatherData.main.temp)}</p>
+            <p id='windSpeed'>Wind speed: {(weatherData.wind.speed)} km/h</p>
+            <p id='country'>Country: {weatherData.sys.country}</p>
           </div>
         )}
         <Link to="/Next">
