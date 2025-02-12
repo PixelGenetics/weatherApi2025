@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 function Home(){
     const [weatherData, setWeatherData] = useState('');
@@ -9,7 +9,7 @@ function Home(){
       try{
         const res = await axios.get('https://api.openweathermap.org/data/2.5/weather?lat=12.135538&lon=-86.220340&appid=7b55880c3f0e1b8fe767a1eb5dd79f01');
         setWeatherData(res.data);
-        console.log(res.data)
+        console.log(res)
       }catch(error){
         console.log(error);
       }
@@ -29,8 +29,8 @@ function Home(){
             <p id='country'>Country: {weatherData.sys.country}</p>
           </div>
         )}
-        <Link to="/Next">
-        <button>Next</button></Link>
+        {/* <Link to="/Next"> */}
+        {/* <button>Next</button></Link> */}
 
       </div>
     </>
