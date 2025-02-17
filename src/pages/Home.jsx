@@ -32,6 +32,8 @@ function Home(){
     <>
       <div className='container'>
         {weatherData && (
+          //agregar imagen de nubes a weather dentro de la etiqueta
+          //<p id='weather' img='imagen de nube'>Weather: {weatherData.weather[0].main}</p>
           <div className='body_container'>
             <p id='weather'>Weather: {weatherData.weather[0].main}</p>
             <p id='temp'>Temp: {(weatherData.main.temp - 273.15).toFixed(2)} °C</p>
