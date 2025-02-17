@@ -1,15 +1,26 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import {useEffect, useState } from 'react';
+import OIP from '../assets/OIP.jpg'
 // import { Link } from 'react-router-dom';
 
 function Home(){
     const [weatherData, setWeatherData] = useState('');
+    const [imgBackground, setImgBackground] = useState('');
+
   useEffect(() => {
     async function weather() {
       try{
         const res = await axios.get('https://api.openweathermap.org/data/2.5/weather?lat=12.135538&lon=-86.220340&appid=7b55880c3f0e1b8fe767a1eb5dd79f01');
         setWeatherData(res.data);
-        console.log(res)
+        console.log(res.data.weather[0].main)
+
+        if(res.data.weather[0].main == 'Clouds'){
+            console.log('if 1')
+            setImgBackground(OIP)
+        }else{
+            console.log('else')
+        }
+
       }catch(error){
         console.log(error);
       }
@@ -27,11 +38,10 @@ function Home(){
             <p id='coord'>Coord: {(weatherData.main.temp)}</p>
             <p id='windSpeed'>Wind speed: {(weatherData.wind.speed)} km/h</p>
             <p id='country'>Country: {weatherData.sys.country}</p>
+            <div id='statusImage' style={{backgroundImage: imgBackground ? `url(${imgBackground})` : 'none'
+          }}></div>
           </div>
         )}
-        {/* <Link to="/Next"> */}
-        {/* <button>Next</button></Link> */}
-
       </div>
     </>
   )

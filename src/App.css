@@ -6,6 +6,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 250px 0px 0px 0px;
+
   }
   
   .body_container {
@@ -15,20 +17,24 @@
     background-color: #f9f9f9;
   }
   .body_container #weather{
-    background-color: red;
-    padding: 50px;
+    background-color: rgb(137, 206, 46);
+    padding: 100px;
+    width: 100px;
   }
   .body_container #temp{
-    background-color: red;
-    padding: 50px;
+    background-color: rgb(35, 118, 185);
+    padding: 100px;
+    width: 100px;
   }
   .body_container #coord{
-    background-color: red;
-    padding: 50px;
+    background-color: rgb(112, 31, 105);
+    padding: 100px;
+    width: 100px;
   }
   .body_container #windSpeed{
-    background-color: red;
-    padding: 50px;
+    background-color: rgb(100, 126, 28);
+    padding: 100px;
+    width: 100px;
   }
   .body_container #country{
     background-color: aqua;
@@ -36,4 +42,8 @@
     grid-column: span 2;
     display: flex;
     justify-content: center;
+  }
+
+  .body_container #statusImage{
+    height: 300px;
   }
