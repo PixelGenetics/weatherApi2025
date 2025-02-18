@@ -35,13 +35,19 @@ function Home(){
           //agregar imagen de nubes a weather dentro de la etiqueta
           //<p id='weather' img='imagen de nube'>Weather: {weatherData.weather[0].main}</p>
           <div className='body_container'>
-            <p id='weather'>Weather: {weatherData.weather[0].main}</p>
+            <div className='body_weather'>
+              <p id='weather'>Weather: {weatherData.weather[0].main}</p>
+              <div id='statusImage' style={{backgroundImage: imgBackground ? `url(${imgBackground})` : 'none'
+              }}>
+            </div>
+            
+            </div>
+            
             <p id='temp'>Temp: {(weatherData.main.temp - 273.15).toFixed(2)} °C</p>
             <p id='coord'>Coord: {(weatherData.main.temp)}</p>
             <p id='windSpeed'>Wind speed: {(weatherData.wind.speed)} km/h</p>
             <p id='country'>Country: {weatherData.sys.country}</p>
-            <div id='statusImage' style={{backgroundImage: imgBackground ? `url(${imgBackground})` : 'none'
-          }}></div>
+
           </div>
         )}
       </div>

@@ -16,11 +16,23 @@
     border-radius: 8px;
     background-color: #f9f9f9;
   }
+
+  /* .body_weather{
+    position: absolute;
+  } */
+  .body_weather #statusImage{
+    position: absolute;
+    bottom: 154px;
+    opacity: 0.5;
+    height: 236px;
+    width: 300px;
+  }
   .body_container #weather{
     background-color: rgb(137, 206, 46);
     padding: 100px;
     width: 100px;
   }
+  
   .body_container #temp{
     background-color: rgb(35, 118, 185);
     padding: 100px;
@@ -44,6 +56,5 @@
     justify-content: center;
   }
 
-  .body_container #statusImage{
-    height: 300px;
-  }
+#statusImage{
+}
