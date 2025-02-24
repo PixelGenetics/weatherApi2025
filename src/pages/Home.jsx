@@ -5,17 +5,20 @@ import OIP from '../assets/OIP.jpg'
 
 function Home(){
     const [weatherData, setWeatherData] = useState('');
+    const [weatherDataArreglo, setWeatherDataArreglo] = useState([]);
+
     const [imgBackground, setImgBackground] = useState('');
 
   useEffect(() => {
     async function weather() {
       try{
-        const res = await axios.get('https://api.openweathermap.org/data/2.5/weather?lat=12.135538&lon=-86.220340&appid=7b55880c3f0e1b8fe767a1eb5dd79f01');
+        const res = await axios.get('https://api.openweathermap.org/data/2.5/weather?lat=55.75222000&lon=37.61556000&units=metric&appid=7b55880c3f0e1b8fe767a1eb5dd79f01');
         setWeatherData(res.data);
         console.log(res.data.weather[0].main)
-
+        setWeatherDataArreglo(res.data.weather[0].main)
+        console.log('dasd',res.data)
         if(res.data.weather[0].main == 'Clouds'){
-            console.log('if 1')
+            // console.log('if 1')
             setImgBackground(OIP)
         }else{
             console.log('else')
@@ -26,7 +29,7 @@ function Home(){
       }
     }
     weather();
-  }, [])
+  }, [weatherDataArreglo])
 
   return (
     <>
@@ -36,15 +39,14 @@ function Home(){
           //<p id='weather' img='imagen de nube'>Weather: {weatherData.weather[0].main}</p>
           <div className='body_container'>
             <div className='body_weather'>
-              <p id='weather'>Weather: {weatherData.weather[0].main}</p>
-              <div id='statusImage' style={{backgroundImage: imgBackground ? `url(${imgBackground})` : 'none'
+            <div id='statusImage' style={{backgroundImage: imgBackground ? `url(${imgBackground})` : 'none'
               }}>
             </div>
-            
+              <p id='weather'>Weather: {weatherData.weather[0].description}</p>            
             </div>
             
-            <p id='temp'>Temp: {(weatherData.main.temp - 273.15).toFixed(2)} °C</p>
-            <p id='coord'>Coord: {(weatherData.main.temp)}</p>
+            <p id='temp'>Temp: {weatherData.main.temp} °C</p>
+            <p id='coord'>Coord: {(weatherData.coord.lon)} {(weatherData.coord.lat)}</p>
             <p id='windSpeed'>Wind speed: {(weatherData.wind.speed)} km/h</p>
             <p id='country'>Country: {weatherData.sys.country}</p>
 
